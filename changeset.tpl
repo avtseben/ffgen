@@ -50,3 +50,20 @@
             <column name="FEAT_UID" value="{{ffName}}"/>
         </insert>
     </changeSet>
+
+    <changeSet author="{{ffAuthor}}" id="insert_FF_tag_{{ffNumber}}">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from FF4J_CUSTOM_PROPERTIES where FEAT_UID =
+                '{{ffName}}' and
+                PROPERTY_ID = 'tag'
+            </sqlCheck>
+        </preConditions>
+        <insert tableName="FF4J_CUSTOM_PROPERTIES">
+            <column name="PROPERTY_ID" value="tag"/>
+            <column name="CLAZZ" value="org.ff4j.property.PropertyString"/>
+            <column name="CURRENTVALUE" value="{{ffTag}}"/>
+            <column name="DESCRIPTION" value=""/>
+            <column name="FEAT_UID" value="{{ffName}}"/>
+        </insert>
+    </changeSet>
