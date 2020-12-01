@@ -6,6 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "ffgen": "index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "configstore": "^5.0.1",
+    "ejs": "^3.1.5",
+    "figlet": "^1.2.1",
+    "inquirer": "^6.3.1",
+    "save": "^2.4.0",
+    "underscore": "^1.12.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/avtseben/ffgen.git"
