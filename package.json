@@ -1,0 +1,23 @@
+{
+  "name": "@atsebenko/ffgen",
+  "version": "1.0.0",
+  "description": "Generate changesets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avtseben/ffgen.git"
+  },
+  "keywords": [
+    "code",
+    "generator"
+  ],
+  "author": "Alexander Tsebenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avtseben/ffgen/issues"
+  },
+  "homepage": "https://github.com/avtseben/ffgen#readme"
+}
