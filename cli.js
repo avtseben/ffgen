@@ -93,7 +93,7 @@ async function prompt() {
     templateVars['ffTag'] = ffTag['ffTag'];
     templateVars['ffNumber'] = ffName['ffName'].split('.')[0];
 
-    let templateBody = fs.readFileSync('./changeset.tpl', 'utf8');
+    let templateBody = fs.readFileSync(__dirname + '/changeset.tpl', 'utf8');
 
     let template = _.template(templateBody);
     let out = template(templateVars);
