@@ -1,19 +1,15 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const figlet = require('figlet');
-const _ = require('underscore');
 const fs = require('fs');
 const Configstore = require('configstore');
+const ejs = require('ejs');
 
 const config = new Configstore('ffgenStore');
 
 const intro = () => {
     console.log(chalk.yellow(figlet.textSync('FF is Easy')));
     console.log(chalk.gray('Generate Your ChangeSets'));
-
-    _.templateSettings = {
-        interpolate: /\{\{(.+?)\}\}/g
-    };
 };
 
 module.exports = async () => {
@@ -78,8 +74,11 @@ async function prompt() {
         type: 'list',
         name: 'ffTag',
         message: 'Select FF Tag(optional):',
-        default: 'WEB',
+        default: '<none>',
         choices: [{
+            name: '<none>',
+            value: '<none>'
+        }, {
             name: 'WEB',
             value: 'WEB'
         }, {
@@ -91,12 +90,14 @@ async function prompt() {
         }]
     });
     templateVars['ffTag'] = ffTag['ffTag'];
+
     templateVars['ffNumber'] = ffName['ffName'].split('.')[0];
 
     let templateBody = fs.readFileSync(__dirname + '/changeset.tpl', 'utf8');
-
-    let template = _.template(templateBody);
+    let template = ejs.compile(templateBody);
     let out = template(templateVars);
+
+    console.log(out);
 
     fs.writeFileSync('changeSet.xml', out);
 };
