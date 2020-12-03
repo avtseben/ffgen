@@ -98,5 +98,5 @@ async function prompt() {
     let out = template(templateVars);
 
     console.log(chalk.gray('Your ChangeSets is:'));
-    console.log(out);
+    console.log(chalk.yellow(out));
 };
