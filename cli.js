@@ -97,7 +97,6 @@ async function prompt() {
     let template = ejs.compile(templateBody);
     let out = template(templateVars);
 
+    console.log(chalk.gray('Your ChangeSets is:'));
     console.log(out);
-
-    fs.writeFileSync('changeSet.xml', out);
 };
